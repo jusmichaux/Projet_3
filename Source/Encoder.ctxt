@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=msg
+comment0.target=int[][]\ encode(java.lang.String)
+comment0.text=\ \r\n\ @pre\ msg\ \!\=\ null\ \r\n\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ une\ matrice\ de\ bits\ correspondant\ \r\n\ au\ message\ msg,\ encod\u00E9\ en\ respectant\ la\ configuration\ de\ cet\ encodeur\ \r\n\ @throw\ EncodingException\ au\ cas\ o\u00F9\ le\ message\ msg\ ne\ peut\ pas\ \u00EAtre\ encod\u00E9\ \r\n
+numComments=1

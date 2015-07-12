@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=data
+comment0.target=java.lang.String\ decode(int[][])
+comment0.text=\r\n\ @pre\ data\ \!\=\ null\ \r\n\ \t\tdata\ est\ une\ matrice\ carr\u00E9e,\ de\ taille\ 32,\ 64,\ 128\ ou\ 256\ \r\n\ \t\tdata\ ne\ contient\ que\ des\ 0\ et\ des\ 1\ \r\n\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ le\ d\u00E9codage\ de\ la\ matrice\ de\ bits\ data\ \r\n\ \t\t\ d\u00E9cod\u00E9e\ en\ respectant\ la\ configuration\ de\ ce\ d\u00E9codeur\r\n\ \t\t\ Si\ la\ matrice\ contient\ une\ erreur,\ celle-ci\ est\ corrig\u00E9e\ \r\n\ @throw\ DecodingException\ au\ cas\ o\u00F9\ la\ matrice\ data\ ne\ peut\ pas\ \u00EAtre\ d\u00E9cod\u00E9e\ \r\n
+comment1.params=data
+comment1.target=boolean\ check(int[][])
+comment1.text=\ \r\n\ @pre\ data\ \!\=\ null\ \r\n\ \t\tdata\ est\ une\ matrice\ carr\u00E9e,\ de\ taille\ 32,\ 64,\ 128\ ou\ 256\ \r\n\ \t\tdata\ ne\ contient\ que\ des\ 0\ et\ des\ 1\ *\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ true\ si\ data\ ne\ contient\ pas\ \r\n\ \t\td\u2019erreurs\ (la\ parit\u00E9\ de\ la\ matrice\ de\ bits\ est\ valide),\ \r\n\ \t\tet\ false\ sinon\ \r\n
+numComments=2

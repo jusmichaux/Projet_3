@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ setConfig()
+comment1.params=
+comment1.target=int\ setCompressionMode()
+comment2.params=
+comment2.target=int\ setDataType()
+comment3.params=
+comment3.target=java.lang.String\ getconfigurationCode()
+comment4.params=msg
+comment4.target=java.lang.String\ toBinaryString(java.lang.String)
+comment5.params=msg
+comment5.target=java.lang.StringBuilder\ toBinaryStringTwice(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ text()
+comment7.params=data
+comment7.target=java.lang.String\ getConfig(int[][])
+comment8.params=data
+comment8.target=void\ affiche(int[][])
+comment9.params=
+comment9.target=void\ affiche2()
+numComments=10
