@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=Matricedata
+comment0.target=Data(int[][])
+comment1.params=
+comment1.target=int\ getWidth()
+comment2.params=
+comment2.target=int\ getHeight()
+comment3.params=line\ column
+comment3.target=boolean\ getValue(int,\ int)
+numComments=4

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ getSize()
+comment0.text=\ \r\n\ @pre\ \r\n\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ la\ taille\ du\ code-barres\ \r\n
+comment1.params=
+comment1.target=int\ getDataType()
+comment1.text=\ \r\n\ @pre\ \r\n\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ le\ type\ de\ donn\u00E9es\ du\ code-barres\ \r\n
+comment2.params=
+comment2.target=int\ getCompressionMode()
+comment2.text=\r\n\ @pre\r\n\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ le\ type\ de\ compression\ du\ code-barres\ \r\n
+numComments=3
