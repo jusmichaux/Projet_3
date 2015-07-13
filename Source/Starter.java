@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 public class Starter
 {
     String configuration;
-    protected static boolean debug;
+    protected static boolean debug=true;
     static boolean create;
     static boolean read;
     static boolean affiche;
@@ -34,6 +34,7 @@ public class Starter
             Configurator config= new Configurator(choiceBuilder1,choiceBuilder2,choiceBuilder3);
             String msgBuilder=startBuilder.text();
             StringBuilder binaryBuilder2=startBuilder.toBinaryStringTwice(msgBuilder);
+            if(debug){System.out.println(binaryBuilder2.toString());}
             int [][]data=new int[choiceBuilder1][choiceBuilder1];
             Encodor startEncodor= new Encodor();
             affiche();

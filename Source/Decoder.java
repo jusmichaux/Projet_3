@@ -25,7 +25,8 @@ public interface Decoder {
 	/** 
 	 * @pre data != null 
 	 * 		data est une matrice carrée, de taille 32, 64, 128 ou 256 
-	 * 		data ne contient que des 0 et des 1 * @post La valeur renvoyée contient true si data ne contient pas 
+	 * 		data ne contient que des 0 et des 1 
+	 * @post La valeur renvoyée contient true si data ne contient pas 
 	 * 		d’erreurs (la parité de la matrice de bits est valide), 
 	 * 		et false sinon 
 	 */ 

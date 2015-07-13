@@ -170,6 +170,24 @@ public class Builder{
         return sb.toString();
     }
 
+    /* Source: http://stackoverflow.com/questions/14498804/binary-string-to-text-string-java-code
+     * Méthode réarrangée par Justin Michaux
+     * 
+     */
+    public static String int2str( String s ) { 
+        String[]ss=new String[(s.length()/8)];
+        for (int i=0; i<(s.length()/8);i++){
+            ss[i]=s.substring(0+(i*8),8+(i*8));
+            if(debug){System.out.println(i+": "+ss[i]);}
+        }
+        //String[] ss = s.split( " " );
+        StringBuilder sb = new StringBuilder();
+        for ( int i = 0; i < ss.length; i++ ) { 
+            sb.append( (char)Integer.parseInt( ss[i], 2 ) );                                                                                                                                                        
+        }   
+        return sb.toString();
+    }  
+
     public static StringBuilder toBinaryStringTwice(String msg){
         byte[] bytes = msg.getBytes();
         StringBuilder binary = new StringBuilder();
@@ -199,8 +217,12 @@ public class Builder{
             int[][] data = new int[width][height];
             for (int l=0; l<width; l++){
                 for (int c=0; c<height; c++){
-                    if( reader.getBarCodeData().getValue(l,c)){data[l][c]=1;}
-                    else {data[l][c]=0;}
+                    if( reader.getBarCodeData().getValue(l,c)){
+                        data[l][c]=1;
+                    }
+                    else {
+                        data[l][c]=0;
+                    }
                 }
             }
             return data;
