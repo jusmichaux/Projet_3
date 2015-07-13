@@ -13,8 +13,9 @@ import javax.imageio.ImageIO;
 public class Starter
 {
     String configuration;
+    protected static boolean debug;
     static boolean create;
-    static boolean write;
+    static boolean read;
     static boolean affiche;
     static int choiceBuilder1;static int choiceBuilder2;static int choiceBuilder3;
     /**
@@ -46,22 +47,34 @@ public class Starter
             }
 
         }
-        if (write){
+        if (read){
             try {
                 BufferedImage img = ImageIO.read(new File("test.png"));
                 int width = img.getWidth();
                 int height = img.getHeight();
-
-                Config decodage = new Config("test.png", width, height);
+                System.out.println("width: "+width+ "height: "+height);
+                Builder decodage = new Builder();
+                int [][]data=new int[width][height];
+                data=decodage.getData("test.png", width, height);
+                if(debug){
+                    System.out.println("Tentative d'écriture du tableau data");
+                    for(int i=0; i<data.length;i++){
+                        for (int j=0; j<data[0].length;j++){
+                            System.out.print(data[i][j]);
+                        }
+                        System.out.println("");
+                    }
+                } 
+                String config;
+                config= decodage.getConfig(data);
+                Configurator Config= new Configurator(decodage.choicea,decodage.choiceb,decodage.choicec);
+                if(debug){System.out.println("Code de configuration: "+config);}
             } catch (IOException e) {
                 System.err.println("Une erreur s'est produite lors de la premiere partie de lecture du Code Barre");
             }
-            
-            Builder startBuilder= new Builder();
-            BarCode2DReader test = new BarCode2DReader();
-            int [][]data=new int[32][32];
-            String decoder=startBuilder.getConfig(data);
-            System.out.println("Décodage: ["+decoder+"]");
+
+            //String decoder=startBuilder.getConfig(data);
+            //System.out.println("Décodage: ["+decoder+"]");
 
             //BarCode2DReader reader = new BarCode2DReader();
             //Data test3 = new Data(reader.getBarCodeData();
@@ -69,15 +82,7 @@ public class Starter
             //reader.getBarCodeData().getValue();
 
             Decodor test1 = new Decodor();
-            if (test1.check(data)==true){System.out.println("check true");}
-            else System.out.println("check false");
 
-            try 
-            {startBuilder.affiche2(); 
-            }
-            catch (IOException e)
-            {System.out.println("Erreur d'écriture");
-            }
             return;
         }
     }   
@@ -119,7 +124,7 @@ public class Starter
     }
 
     public static void start (){
-        create= false; write=false;
+        create= false; read=false;
         int i = 1;
         boolean next = true;
         System.out.println("Que voulez-vous faire ?\nCréer ou lire un code-barres 2D ?");
@@ -142,10 +147,10 @@ public class Starter
         }
         switch (i){
             case 1 : System.out.println("Vous avez choisi créer");
-            create=true;write=false;
+            create=true;read=false;
             break;
             case 2 : System.out.println("Vous avez choisi lire");
-            write=true;create=false;
+            read=true;create=false;
             break;
 
             default: System.out.println("Vous n'avez pas entrer un choix valide");

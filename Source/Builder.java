@@ -12,6 +12,7 @@ public class Builder{
     static String config = "";static String cfg = "";
     static StringBuffer configuration = new StringBuffer (config) ; 
     static String msg;
+    protected static boolean debug=false;
     boolean next=true;
     int i=0;
     private String filename; 
@@ -19,7 +20,7 @@ public class Builder{
     public int setConfig() {
         System.out.println("Choissisez une taille parmi celles disponibles :");
         System.out.printf( "\n 32x32   (1) \n 64x64   (2) \n 128x128 (3) \n 256x256 (4)\n");
-         while (next){
+        while (next){
             Scanner choice = new Scanner (System.in);
             try{
                 i=choice.nextInt() ;
@@ -65,7 +66,7 @@ public class Builder{
         System.out.printf("\n Oui (1) \n Non (2)\n");
         int l=0;
         boolean next=true;
-         while (next){
+        while (next){
             Scanner choice = new Scanner (System.in);
             try{
                 l=choice.nextInt() ;
@@ -107,7 +108,7 @@ public class Builder{
         boolean next=true;
         System.out.println("Choissisez un type de données parmi celles disponibles :");
         System.out.printf( "\n ASCII 7 bits   (1) \n ASCII étendu   (2) \n URL            (3) \n Japanese Kanji (4)\n");
-         while (next){
+        while (next){
             Scanner choice = new Scanner (System.in);
             try{
                 i=choice.nextInt() ;
@@ -191,20 +192,91 @@ public class Builder{
         return msg;
     }
 
+    public int[][] getData (String filename, int width, int height){
+        try
+        {
+            reader.loadBarCode2D(filename, width,height);
+            int[][] data = new int[width][height];
+            for (int l=0; l<width; l++){
+                for (int c=0; c<height; c++){
+                    if( reader.getBarCodeData().getValue(l,c)){data[l][c]=1;}
+                    else {data[l][c]=0;}
+                }
+            }
+            return data;
+        }
+        catch (IOException exception)
+        {
+            System.err.println ("Une erreur s'est produite lors de la lecture du fichier");
+        }
+        return null;
+    }
+
     public static String getConfig(int [][]data){
         int temp;
         String code="";
         String input="";
         StringBuilder decode= new StringBuilder();
-        for (int c=0; c<data.length-1;c++){
-            for (int l=0; l<data[0].length-1;l++){
+        for (int c=1; c<data.length-1;c++){
+            for (int l=1; l<data[0].length-1;l++){
                 temp=data[c][l];
                 decode.append(temp); 
             }
         }
         try{code=decode.substring(0,16);}
-        catch(Exception e){System.out.println("Erreur de décryptage");}
+        catch(Exception e){System.out.println("Erreur de décryptage dans getConfig");}
         return code.toString();
+    }
+
+    public static void checkConfig(String data){
+        assert data!=null : "Erreur dans checkConfig";
+        String taille;String datatype;String compression;
+        taille=data.substring(0,3);
+        datatype=data.substring(3,7);
+        compression=data.substring(7,8);
+        if(debug){
+            System.out.println("String data:"+data+"\ntaille:"+taille+"\ndatatype:"+datatype+"\ncompression:"+compression);}
+        switch (taille){
+            case "000" : //System.out.println("Vous avez choisi 32x32");
+            choicea=32;
+            break;
+            case "001" : //System.out.println("Vous avez choisi 64x64");
+            choicea=64;
+            break;
+            case "010" : //System.out.println("Vous avez choisi 128x128");
+            choicea=128;
+            break;
+            case "011" : //System.out.println("Vous avez choisi lire");
+            choicea=264;
+            break;
+            default: System.out.println("Erreur dans checkConfig");
+        }
+        switch (datatype){
+            case "0000" : //System.out.println("Vous avez choisi ASCII");
+            choiceb=0;
+            break;
+            case "0001" : //System.out.println("Vous avez choisi ASCII étendu");
+            choiceb=1;
+            break;
+            case "0010" : //System.out.println("Vous avez choisi URL");
+            choiceb=2;
+            break;
+            case "0011" : //System.out.println("Vous avez choisi Kanji");
+            choiceb=3;
+            break;
+            default: System.out.println("Erreur dans checkConfig");
+        }
+        switch (compression){
+            case "1" : //System.out.println("Vous avez choisi on");
+            choicec=1;
+            break;
+            case "0" : //System.out.println("Vous avez choisi off");
+            choicec=0;
+            break;
+
+            default: System.out.println("Erreur dans checkConfig");
+        }
+        Configurator Config= new Configurator(choicea,choiceb,choicec);
     }
 
     public static void affiche(int [][]data)throws IOException
@@ -214,7 +286,7 @@ public class Builder{
         new BarCode2DFrame ((BarCode2DData)dataf, msg); 
         try 
         {
-            writer.drawBarCode2D("test.png", choicea*choicea, choicea*choicea);
+            writer.drawBarCode2D("test.png", choicea, choicea);
         }
         catch (IOException e)
         {
