@@ -12,11 +12,29 @@ public class Builder{
     static String config = "";static String cfg = "";
     static StringBuffer configuration = new StringBuffer (config) ; 
     static String msg;
+    boolean next=true;
+    int i=0;
+    private String filename; 
+    private BarCode2DReader reader = new BarCode2DReader();
     public int setConfig() {
         System.out.println("Choissisez une taille parmi celles disponibles :");
         System.out.printf( "\n 32x32   (1) \n 64x64   (2) \n 128x128 (3) \n 256x256 (4)\n");
-        Scanner choice = new Scanner (System.in);
-        int i = choice.nextInt(); 
+         while (next){
+            Scanner choice = new Scanner (System.in);
+            try{
+                i=choice.nextInt() ;
+                next = false;
+            } 
+            catch(java.util.NoSuchElementException e){
+                next = true;
+            }
+            if (i > 4 || i < 1){
+                next = true;
+            }
+            if (next) {
+                System.out.println("Vous n'avez pas entrer un choix valide");
+            }
+        }
         switch (i){
             case 1 : System.out.println("Vous avez choisi 32x32");
             configuration.append ("000");
@@ -42,12 +60,27 @@ public class Builder{
 
     public int setCompressionMode()
     {
-        Scanner choice= new Scanner(System.in);
         //configuration.delete(0, configuration.length());
         System.out.println("Voulez-vous utilisez le mode de compression ?");
         System.out.printf("\n Oui (1) \n Non (2)\n");
-        int l = choice.nextInt();
-
+        int l=0;
+        boolean next=true;
+         while (next){
+            Scanner choice = new Scanner (System.in);
+            try{
+                l=choice.nextInt() ;
+                next = false;
+            } 
+            catch(java.util.NoSuchElementException e){
+                next = true;
+            }
+            if (i > 2 || i < 1){
+                next = true;
+            }
+            if (next) {
+                System.out.println("Vous n'avez pas entrer un choix valide");
+            }
+        }
         switch (l)
         {
             case 1 : System.out.println("Mode de compression activé");
@@ -70,10 +103,26 @@ public class Builder{
     public int setDataType(){  
         //configuration.delete(0, configuration.length());
         //System.out.println(configuration);
+        int i=0;
+        boolean next=true;
         System.out.println("Choissisez un type de données parmi celles disponibles :");
-        System.out.printf( "\n ASCII 7 bits   (1) \n ASCII étendu   (2) \n URL (3) \n Japanese Kanji (4)\n");
-        Scanner choice = new Scanner(System.in);
-        int i = choice.nextInt();
+        System.out.printf( "\n ASCII 7 bits   (1) \n ASCII étendu   (2) \n URL            (3) \n Japanese Kanji (4)\n");
+         while (next){
+            Scanner choice = new Scanner (System.in);
+            try{
+                i=choice.nextInt() ;
+                next = false;
+            } 
+            catch(java.util.NoSuchElementException e){
+                next = true;
+            }
+            if (i > 4 || i < 1){
+                next = true;
+            }
+            if (next) {
+                System.out.println("Vous n'avez pas entrer un choix valide");
+            }
+        }
         switch (i){
             case 1 : System.out.println("Vous avez choisi  ASCII 7 bits ");
             configuration.append ("0000");

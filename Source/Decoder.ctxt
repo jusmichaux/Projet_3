@@ -5,4 +5,7 @@ comment0.text=\r\n\ @pre\ data\ \!\=\ null\ \r\n\ \t\tdata\ est\ une\ matrice\ c
 comment1.params=data
 comment1.target=boolean\ check(int[][])
 comment1.text=\ \r\n\ @pre\ data\ \!\=\ null\ \r\n\ \t\tdata\ est\ une\ matrice\ carr\u00E9e,\ de\ taille\ 32,\ 64,\ 128\ ou\ 256\ \r\n\ \t\tdata\ ne\ contient\ que\ des\ 0\ et\ des\ 1\ *\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ true\ si\ data\ ne\ contient\ pas\ \r\n\ \t\td\u2019erreurs\ (la\ parit\u00E9\ de\ la\ matrice\ de\ bits\ est\ valide),\ \r\n\ \t\tet\ false\ sinon\ \r\n
-numComments=2
+comment2.params=
+comment2.target=Configuration\ getConfiguration()
+comment2.text=\ \r\n\ @pre\ \r\n\ @post\ La\ valeur\ renvoy\u00E9e\ contient\ la\ configuration\ de\ ce\ d\u00E9codeur\ \r\n
+numComments=3
