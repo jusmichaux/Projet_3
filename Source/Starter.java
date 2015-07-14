@@ -72,6 +72,12 @@ public class Starter
                 Configurator Config= new Configurator(decodage.choicea,decodage.choiceb,decodage.choicec);
                 if(debug){System.out.println("Code de configuration: "+config);}
                 Decodor decod = new Decodor();
+                if (decod.check(data)==true){
+                    System.out.println("Aucune erreur détecté");
+                }
+                else {
+                    System.out.println("Erreur détectée grâce à check");
+                }
                 if(debug){System.out.println("["+decodage.int2str(decod.getData(data))+"]");}
                 try 
                 {decodage.affiche2("test.png", width, height,decodage.int2str(decod.getData(data)) ); 
