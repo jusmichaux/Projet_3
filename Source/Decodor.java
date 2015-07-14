@@ -1,5 +1,6 @@
 
 public class Decodor implements Decoder {
+    protected static boolean debug = false;
     @Override
     public String decode(int[][] data) {
         int a=0;
@@ -38,14 +39,32 @@ public class Decodor implements Decoder {
         int []subarray = new int[16];
         int count=0;
         if (count<16){
-            for (int l=1;l<data.length;l++){
-                for (int c=1;c<data[0].length;c++){
+            for (int l=1;l<data.length-1;l++){
+                for (int c=1;c<data[0].length-1;c++){
                     subarray[count]=data[l][c];
                     count++;
                 }
             }
         }
         return subarray;
+    }
+
+    public static String getData(int [][]data){
+        String sdata="";
+        StringBuilder dat= new StringBuilder(sdata);
+        int count=0;
+        for (int l=1;l<data.length-1;l++){
+            for (int c=1;c<data[0].length-1;c++){                
+                if (count>15/*&&count<((7*8)+17)*/){
+                    dat=dat.append(data[l][c]);
+                }
+                count++;
+            }
+        }
+        if (debug){
+            System.out.println("getData:["+dat.toString()+"]");
+        }
+        return dat.toString();
     }
 
     /**

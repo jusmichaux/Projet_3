@@ -5,9 +5,11 @@ comment1.params=data
 comment1.target=boolean\ check(int[][])
 comment2.params=data
 comment2.target=int[]\ findConfiguration(int[][])
-comment3.params=number
-comment3.target=boolean\ evenOrNot(int)
-comment3.text=\r\n\ @pre\:\ number\ \!\=\ null\r\n
-comment4.params=
-comment4.target=Configuration\ getConfiguration()
-numComments=5
+comment3.params=data
+comment3.target=java.lang.String\ getData(int[][])
+comment4.params=number
+comment4.target=boolean\ evenOrNot(int)
+comment4.text=\r\n\ @pre\:\ number\ \!\=\ null\r\n
+comment5.params=
+comment5.target=Configuration\ getConfiguration()
+numComments=6

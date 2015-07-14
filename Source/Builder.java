@@ -13,11 +13,12 @@ public class Builder{
     static StringBuffer configuration = new StringBuffer (config) ; 
     static String msg;
     protected static boolean debug=false;
-    boolean next=true;
-    int i=0;
+    
+    int i=0;int j=0; int l=0;
     private String filename; 
     private BarCode2DReader reader = new BarCode2DReader();
     public int setConfig() {
+        boolean next=true;
         System.out.println("Choissisez une taille parmi celles disponibles :");
         System.out.printf( "\n 32x32   (1) \n 64x64   (2) \n 128x128 (3) \n 256x256 (4)\n");
         while (next){
@@ -63,8 +64,7 @@ public class Builder{
     {
         //configuration.delete(0, configuration.length());
         System.out.println("Voulez-vous utilisez le mode de compression ?");
-        System.out.printf("\n Oui (1) \n Non (2)\n");
-        int l=0;
+        System.out.printf("\n Oui (1) \n Non (2)\n");    
         boolean next=true;
         while (next){
             Scanner choice = new Scanner (System.in);
@@ -85,15 +85,16 @@ public class Builder{
         switch (l)
         {
             case 1 : System.out.println("Mode de compression activé");
-            configuration.append ("1");
+            configuration.append ("001");
             choicec=1;
             break;
             case 2 : System.out.println("Mode de compression désactivé");
-            configuration.append ("0");
+            configuration.append ("000");
             choicec=0;
             break;
             default: System.out.println("Vous n'avez pas entrer un choix valide");
         }
+        configuration.append("000000");// 6 bits fixés à 0
         return choicec;
         //System.out.println("Code binaire de configuraton :"+configuration);
         //cfg = configuration.toString();
@@ -104,14 +105,13 @@ public class Builder{
     public int setDataType(){  
         //configuration.delete(0, configuration.length());
         //System.out.println(configuration);
-        int i=0;
         boolean next=true;
         System.out.println("Choissisez un type de données parmi celles disponibles :");
         System.out.printf( "\n ASCII 7 bits   (1) \n ASCII étendu   (2) \n URL            (3) \n Japanese Kanji (4)\n");
         while (next){
             Scanner choice = new Scanner (System.in);
             try{
-                i=choice.nextInt() ;
+                j=choice.nextInt() ;
                 next = false;
             } 
             catch(java.util.NoSuchElementException e){
@@ -124,7 +124,7 @@ public class Builder{
                 System.out.println("Vous n'avez pas entrer un choix valide");
             }
         }
-        switch (i){
+        switch (j){
             case 1 : System.out.println("Vous avez choisi  ASCII 7 bits ");
             configuration.append ("0000");
             choiceb=0;
@@ -255,7 +255,7 @@ public class Builder{
         String taille;String datatype;String compression;
         taille=data.substring(0,3);
         datatype=data.substring(3,7);
-        compression=data.substring(7,8);
+        compression=data.substring(7,10);
         if(debug){
             System.out.println("String data:"+data+"\ntaille:"+taille+"\ndatatype:"+datatype+"\ncompression:"+compression);}
         switch (taille){
@@ -289,11 +289,11 @@ public class Builder{
             default: System.out.println("Erreur dans checkConfig");
         }
         switch (compression){
-            case "1" : //System.out.println("Vous avez choisi on");
-            choicec=1;
+            case "001" : //System.out.println("Vous avez choisi on");
+            choicec=001;
             break;
-            case "0" : //System.out.println("Vous avez choisi off");
-            choicec=0;
+            case "000" : //System.out.println("Vous avez choisi off");
+            choicec=000;
             break;
 
             default: System.out.println("Erreur dans checkConfig");
@@ -316,12 +316,12 @@ public class Builder{
         }
     }
 
-    public static void affiche2()throws IOException{
+    public static void affiche2(String filename, int height, int width, String msg)throws IOException{
         try
         {
             BarCode2DReader reader = new BarCode2DReader();
-            reader.loadBarCode2D ("test.png", 32, 32);
-            new BarCode2DFrame (reader.getBarCodeData(), "Hello A., koff koff...");
+            reader.loadBarCode2D (filename, height, width);
+            new BarCode2DFrame (reader.getBarCodeData(), msg);
         }
         catch (IOException exception)
         {

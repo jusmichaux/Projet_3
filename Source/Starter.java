@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 public class Starter
 {
     String configuration;
-    protected static boolean debug=true;
+    protected static boolean debug=false;
     static boolean create;
     static boolean read;
     static boolean affiche;
@@ -53,14 +53,14 @@ public class Starter
                 BufferedImage img = ImageIO.read(new File("test.png"));
                 int width = img.getWidth();
                 int height = img.getHeight();
-                System.out.println("width: "+width+ "height: "+height);
+                if(debug){System.out.println("width: "+width+ "height: "+height);}
                 Builder decodage = new Builder();
                 int [][]data=new int[width][height];
                 data=decodage.getData("test.png", width, height);
                 if(debug){
                     System.out.println("Tentative d'écriture du tableau data");
-                    for(int i=0; i<data.length;i++){
-                        for (int j=0; j<data[0].length;j++){
+                    for(int i=0; i<data.length-1;i++){
+                        for (int j=0; j<data[0].length-1;j++){
                             System.out.print(data[i][j]);
                         }
                         System.out.println("");
@@ -70,6 +70,14 @@ public class Starter
                 config= decodage.getConfig(data);
                 Configurator Config= new Configurator(decodage.choicea,decodage.choiceb,decodage.choicec);
                 if(debug){System.out.println("Code de configuration: "+config);}
+                Decodor decod = new Decodor();
+                if(debug){System.out.println("["+decodage.int2str(decod.getData(data))+"]");}
+                try 
+                {decodage.affiche2("test.png", width, height,decodage.int2str(decod.getData(data)) ); 
+                }
+                catch (IOException e)
+                {System.out.println("Erreur d'écriture");
+                }
             } catch (IOException e) {
                 System.err.println("Une erreur s'est produite lors de la premiere partie de lecture du Code Barre");
             }
