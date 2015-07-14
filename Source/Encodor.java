@@ -57,10 +57,11 @@ public class Encodor implements Encoder {
     }
 
     public void encodeParity(int [][]data, int length){
-        int countl=0;
-        int countc=0;
+
         int countcorner=0;
         for (int c=1; c<length;c++){
+            int countl=0;
+            int countc=0;
             for (int l=1;l<length;l++){
                 if (data[c][l]==1){
                     countc++;
