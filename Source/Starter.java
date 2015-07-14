@@ -39,7 +39,8 @@ public class Starter
             Encodor startEncodor= new Encodor();
             affiche();
             data= startEncodor.encode((startBuilder.getconfigurationCode())+(binaryBuilder2.toString()), choiceBuilder1, affiche);
-
+            startEncodor.encodeParity(data,choiceBuilder1);
+            
             try 
             {startBuilder.affiche(data); 
             }
@@ -81,17 +82,6 @@ public class Starter
             } catch (IOException e) {
                 System.err.println("Une erreur s'est produite lors de la premiere partie de lecture du Code Barre");
             }
-
-            //String decoder=startBuilder.getConfig(data);
-            //System.out.println("Décodage: ["+decoder+"]");
-
-            //BarCode2DReader reader = new BarCode2DReader();
-            //Data test3 = new Data(reader.getBarCodeData();
-            //reader.loadBarCode2D ("test.png", 32, 32);
-            //reader.getBarCodeData().getValue();
-
-            Decodor test1 = new Decodor();
-
             return;
         }
     }   

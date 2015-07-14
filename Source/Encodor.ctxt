@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=Configuration\ getConfiguration()
 comment3.params=msg
 comment3.target=int[][]\ encode(java.lang.String)
-numComments=4
+comment4.params=data\ length
+comment4.target=void\ encodeParity(int[][],\ int)
+numComments=5

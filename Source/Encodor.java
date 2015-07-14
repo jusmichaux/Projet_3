@@ -1,5 +1,4 @@
 
-
 public class Encodor implements Encoder {
     // pour importer la taille, on rajoute un paramètre nommé choicea venant de Starter
     public int[][] encode(String Aftercast, int choicea)  {
@@ -23,6 +22,7 @@ public class Encodor implements Encoder {
         return tab;
 
     }
+
     public int[][] encode(String Aftercast, int choicea, boolean affiche)  {
         int j=choicea;
         int[][] tab= new int[j][j]; 
@@ -56,6 +56,33 @@ public class Encodor implements Encoder {
         return null;
     }
 
+    public void encodeParity(int [][]data, int length){
+        int countl=0;
+        int countc=0;
+        int countcorner=0;
+        for (int c=1; c<length;c++){
+            for (int l=1;l<length;l++){
+                if (data[c][l]==1){
+                    countc++;
+                }
+                if (data[l][c]==1){
+                    countl++;
+                }
+            }
+            if (countc % 2 !=0){
+                data[c][0] = 1;
+            }
+            if (countl % 2 !=0){
+                data[0][c] = 1;
+            }
+            if (data[0][c] == 1){
+                countcorner++;
+            }
+        }
+        if (countcorner%2 !=0){
+            data[0][0] = 1;
+        }
+    }
 }
 class EncodingException extends Exception{
     EncodingException (String mes)

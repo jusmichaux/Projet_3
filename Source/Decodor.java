@@ -13,6 +13,7 @@ public class Decodor implements Decoder {
     public boolean check(int[][] data) {
         int temp=0;
         int ligncount=0;
+        int posX=0; int posY=0;int error=0;
         assert data != null : "Data est null";
         assert temp == 0 || temp == 1 : "Le tableau ne contient pas uniquement de 0 ou de 1";
         for (int l=0; l<data.length-1;l++){
@@ -21,7 +22,11 @@ public class Decodor implements Decoder {
                 ligncount=ligncount+temp;
 
             }
-            if (evenOrNot(ligncount)==false){return false;}
+            if (evenOrNot(ligncount)==false){
+                error++;
+                posX=l;
+
+            }
         }
 
         for (int c=0; c<data[0].length-1;c++){
@@ -29,12 +34,27 @@ public class Decodor implements Decoder {
                 temp=data[c][l];
                 ligncount=ligncount+temp;
             }
-            if (evenOrNot(ligncount)==false){return false;}
+            if (evenOrNot(ligncount)==false){
+                error++;
+                posY=c;
+
+            }
         }
-        return true;
+        if (error==2){
+            data[posX][posY]=reverseInt(data[posX][posY]);
+            error=0;
+        }
+        if (error > 0) {
+            return false;
+        } else {
+            return true;
+        }
 
     }
-
+    public static int reverseInt(int index){
+        if (index==0){return 1;}
+        else return 0;
+    }
     public static int[] findConfiguration(int [][]data){
         int []subarray = new int[16];
         int count=0;
