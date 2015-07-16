@@ -8,9 +8,6 @@ dependency10.type=UsesDependency
 dependency11.from=Builder
 dependency11.to=Configurator
 dependency11.type=UsesDependency
-dependency12.from=Builder
-dependency12.to=Encodor
-dependency12.type=UsesDependency
 dependency2.from=Decodor
 dependency2.to=Configuration
 dependency2.type=UsesDependency
@@ -36,6 +33,7 @@ dependency9.from=Starter
 dependency9.to=Data
 dependency9.type=UsesDependency
 <<<<<<< HEAD
+<<<<<<< HEAD
 objectbench.height=76
 objectbench.width=1868
 package.editor.height=919
@@ -45,13 +43,20 @@ package.editor.y=0
 package.numDependencies=11
 =======
 objectbench.height=85
+=======
+objectbench.height=76
+>>>>>>> parent of b612c8c... Step 6
 objectbench.width=1260
-package.editor.height=819
+package.editor.height=828
 package.editor.width=1136
 package.editor.x=-8
 package.editor.y=-8
+<<<<<<< HEAD
 package.numDependencies=12
 >>>>>>> origin/master
+=======
+package.numDependencies=11
+>>>>>>> parent of b612c8c... Step 6
 package.numTargets=10
 package.showExtends=true
 package.showUses=true
@@ -90,11 +95,18 @@ target2.editor.y=199
 =======
 target10.x=410
 target10.y=420
+<<<<<<< HEAD
 target2.editor.height=1000
 target2.editor.width=1296
 target2.editor.x=-8
 target2.editor.y=-8
 >>>>>>> origin/master
+=======
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=32
+target2.editor.y=12
+>>>>>>> parent of b612c8c... Step 6
 target2.height=50
 target2.name=Configuration
 target2.naviview.expanded=false
@@ -136,11 +148,18 @@ target5.editor.width=1936
 =======
 target4.x=620
 target4.y=200
+<<<<<<< HEAD
 target5.editor.height=1000
 target5.editor.width=1296
 >>>>>>> origin/master
 target5.editor.x=-8
 target5.editor.y=-8
+=======
+target5.editor.height=984
+target5.editor.width=640
+target5.editor.x=640
+target5.editor.y=0
+>>>>>>> parent of b612c8c... Step 6
 target5.height=50
 target5.name=Builder
 target5.naviview.expanded=false
@@ -173,9 +192,14 @@ target6.x=610
 target6.y=10
 target7.editor.height=700
 target7.editor.width=900
+<<<<<<< HEAD
 target7.editor.x=105
 target7.editor.y=155
 >>>>>>> origin/master
+=======
+target7.editor.x=1030
+target7.editor.y=199
+>>>>>>> parent of b612c8c... Step 6
 target7.height=50
 target7.name=Data
 target7.naviview.expanded=false
@@ -206,11 +230,18 @@ target9.editor.y=277
 =======
 target8.x=70
 target8.y=10
+<<<<<<< HEAD
 target9.editor.height=1000
 target9.editor.width=1296
 target9.editor.x=-8
 target9.editor.y=-8
 >>>>>>> origin/master
+=======
+target9.editor.height=984
+target9.editor.width=640
+target9.editor.x=640
+target9.editor.y=0
+>>>>>>> parent of b612c8c... Step 6
 target9.height=50
 target9.name=Decoder
 target9.naviview.expanded=false
@@ -219,9 +250,13 @@ target9.type=InterfaceTarget
 target9.typeParameters=
 target9.width=80
 <<<<<<< HEAD
+<<<<<<< HEAD
 target9.x=70
 target9.y=10
 =======
 target9.x=290
+=======
+target9.x=300
+>>>>>>> parent of b612c8c... Step 6
 target9.y=750
 >>>>>>> origin/master

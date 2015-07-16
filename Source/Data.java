@@ -20,10 +20,10 @@ public class Data implements BarCode2DData
         return Matricedata.length;
 
     }
-
     public int getHeight()
     {
-           return Matricedata[0].length;
+        return Matricedata[0].length;
+
     }
     public boolean getValue(int line, int column)
     {
@@ -31,7 +31,7 @@ public class Data implements BarCode2DData
         if (Matricedata[line][column]== 0)
         {
             check= false ;
-
+            
         }
         if (Matricedata[line][column]== 1)
         {
