@@ -111,19 +111,19 @@ public class Starter
                 next = true;
             }
             if (next) {
-                System.out.println("Vous n'avez pas entrer un choix valide");
+                System.out.println("Vous n'avez pas entrer un choix valide\n");
             }
         }
 
         switch (i){
-            case 1 : System.out.println("Vous avez choisi oui");
+            case 1 : System.out.println("Vous avez choisi oui\n");
             affiche=true;
             break;
-            case 2 : System.out.println("Vous avez choisi non");
+            case 2 : System.out.println("Vous avez choisi non\n");
             affiche=false;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
 
     }
@@ -132,8 +132,9 @@ public class Starter
         create= false; read=false;
         int i = 1;
         boolean next = true;
+        System.out.println("Bienvenue dans le programme CB2D\n-----------------------------------------------------");
         System.out.println("Que voulez-vous faire ?\nCréer ou lire un code-barres 2D ?");
-        System.out.println("Créer (1)\nLire (2)");
+        System.out.println(" Créer  (1)\n Lire   (2)");
         while (next){
             Scanner choice = new Scanner (System.in);
             try{
@@ -151,14 +152,14 @@ public class Starter
             }
         }
         switch (i){
-            case 1 : System.out.println("Vous avez choisi créer");
+            case 1 : System.out.println("Vous avez choisi créer\n");
             create=true;read=false;
             break;
-            case 2 : System.out.println("Vous avez choisi lire");
+            case 2 : System.out.println("Vous avez choisi lire\n");
             read=true;create=false;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
 
     }

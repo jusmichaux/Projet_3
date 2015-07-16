@@ -34,28 +34,28 @@ public class Builder{
                 next = true;
             }
             if (next) {
-                System.out.println("Vous n'avez pas entrer un choix valide");
+                System.out.println("Vous n'avez pas entrer un choix valide\n");
             }
         }
         switch (i){
-            case 1 : System.out.println("Vous avez choisi 32x32");
+            case 1 : System.out.println("Vous avez choisi 32x32\n");
             configuration.append ("000");
             choicea=32;
             break;
-            case 2 : System.out.println("Vous avez choisi 64x64");
+            case 2 : System.out.println("Vous avez choisi 64x64\n");
             configuration.append ("001");
             choicea=64;
             break;
-            case 3 : System.out.println("Vous avez choisi 128x128");
+            case 3 : System.out.println("Vous avez choisi 128x128\n");
             configuration.append ("010");
             choicea=128;
             break;
-            case 4 : System.out.println("Vous avez choisi 256x256");    
+            case 4 : System.out.println("Vous avez choisi 256x256\n");    
             configuration.append ("011");
             choicec=256;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
         return choicea;
     }
@@ -84,15 +84,15 @@ public class Builder{
         }
         switch (l)
         {
-            case 1 : System.out.println("Mode de compression activé");
+            case 1 : System.out.println("Mode de compression activé\n");
             configuration.append ("001");
             choicec=1;
             break;
-            case 2 : System.out.println("Mode de compression désactivé");
+            case 2 : System.out.println("Mode de compression désactivé\n");
             configuration.append ("000");
             choicec=0;
             break;
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
         configuration.append("000000");// 6 bits fixés à 0
         return choicec;
@@ -125,24 +125,24 @@ public class Builder{
             }
         }
         switch (j){
-            case 1 : System.out.println("Vous avez choisi  ASCII 7 bits ");
+            case 1 : System.out.println("Vous avez choisi  ASCII 7 bits\n");
             configuration.append ("0000");
             choiceb=0;
             break;
-            case 2 : System.out.println("Vous avez choisi  ASCII étendu");
+            case 2 : System.out.println("Vous avez choisi  ASCII étendu\n");
             configuration.append ("0001");
             choiceb=1;
             break;
-            case 3 : System.out.println("Vous avez choisi URL");
+            case 3 : System.out.println("Vous avez choisi URL\n");
             configuration.append ("0010");
             choiceb=2;
             break;
-            case 4 : System.out.println("Vous avez choisi Japanese Kanji"); 
+            case 4 : System.out.println("Vous avez choisi Japanese Kanji\n"); 
             configuration.append ("0011");
             choiceb=3;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
         return choiceb;
 
