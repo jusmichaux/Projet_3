@@ -123,7 +123,11 @@ public class Starter
             affiche=false;
             break;
 
+<<<<<<< HEAD
             default: System.out.println("Vous n'avez pas entrer un choix valide\n");
+=======
+            default: System.out.println("Vous n'avez pas entrer un choix valide");
+>>>>>>> parent of b612c8c... Step 6
         }
 
     }
