@@ -1,5 +1,5 @@
 import barcode2d.*;
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
 /**
  * Write a description of class Builder here.
@@ -13,7 +13,7 @@ public class Builder{
     static StringBuffer configuration = new StringBuffer (config) ; 
     static String msg;
     protected static boolean debug=false;
-    
+
     int i=0;int j=0; int l=0;
     private String filename; 
     private BarCode2DReader reader = new BarCode2DReader();
@@ -75,7 +75,7 @@ public class Builder{
             catch(java.util.NoSuchElementException e){
                 next = true;
             }
-            if (i > 2 || i < 1){
+            if (l > 2 || l < 1){
                 next = true;
             }
             if (next) {
@@ -202,11 +202,24 @@ public class Builder{
         return binary;
     }
 
-    public static String text() {
+    public String text() {
+        boolean repeat=true; String encoding;String msg="";
         System.out.printf("\nQuel est le texte à encoder ?\n");
+        System.out.printf("\nAttention, écrivez endScanner pour marquer la fin de votre texte !\n");
         Scanner sc = new Scanner(System.in);
-        msg=sc.nextLine();
+        do{
+            encoding=sc.next();
+            msg=msg+" "+encoding;
+            this.msg=msg;
+        }
+        while (!msg.endsWith("endScanner"));
+        /*if (msg.endsWith("endScanner")){
+        return msg;
+        }*/
         sc.close();
+        msg=msg.substring(0, msg.length()-11);
+        if(debug){System.out.println(msg);}
+        this.msg=msg;
         return msg;
     }
 
@@ -304,16 +317,18 @@ public class Builder{
     public static void affiche(int [][]data)throws IOException
     {
         Data dataf= new Data(data);
-        BarCode2DWriter writer = new BarCode2DWriter((BarCode2DData) dataf);
-        new BarCode2DFrame ((BarCode2DData)dataf, msg); 
+
         try 
         {
+            BarCode2DWriter writer = new BarCode2DWriter((BarCode2DData) dataf);
+            new BarCode2DFrame ((BarCode2DData)dataf, msg); 
             writer.drawBarCode2D("test.png", choicea, choicea);
         }
         catch (IOException e)
         {
             System.out.println("Erreur d'écriture");
         }
+
     }
 
     public static void affiche2(String filename, int height, int width, String msg)throws IOException{

@@ -5,12 +5,11 @@ public class Encodor implements Encoder {
         int j=choicea;
         int[][] tab= new int[j][j]; 
         int count=0;
-
-        for(int l=1; l<tab.length-1 ; l++)
+        for(int l=1; l<tab.length ; l++)
         {
-            for (int c=1; c<tab[0].length-1; c++)
+            for (int c=1; c<tab[0].length; c++)
             {
-                if (count<Aftercast.length())
+                if (count<(((choicea--)*(choicea--))-16)/*Aftercast.length()*/)
                 {
                     tab[l][c]= Character.getNumericValue(Aftercast.charAt(count));
                     count++;
@@ -25,12 +24,12 @@ public class Encodor implements Encoder {
 
     public int[][] encode(String Aftercast, int choicea, boolean affiche)  {
         int j=choicea;
-        int[][] tab= new int[j][j]; 
+        int[][] tab= new int[choicea][choicea]; 
         int count=0;
         if (affiche){System.out.println("Remarque : la matrice affichée ne comprends pas la zone de correction");}
-        for(int l=1; l<tab.length-1 ; l++)
+        for(int l=1; l<tab.length ; l++)
         {
-            for (int c=1; c<tab[0].length-1; c++)
+            for (int c=1; c<tab[0].length; c++)
             {
                 if (count<Aftercast.length())
                 {
@@ -39,8 +38,11 @@ public class Encodor implements Encoder {
                 }
                 if (affiche){System.out.print(tab[l][c]+" ");}
             }
-            if(affiche){System.out.println("");     }
+            if(affiche){System.out.println("");     
+            }
+            
         }
+        if (affiche){System.out.println("count: "+count+"\n Aftercast.length: "+Aftercast.length());}
         return tab;
 
     }
@@ -86,9 +88,8 @@ public class Encodor implements Encoder {
     }
 }
 class EncodingException extends Exception{
-    EncodingException (String mes)
-    {
-        super(mes);
-        System.out.println("Encoding Exception lancée.");
+    EncodingException (String mes, Throwable cause){
+        super(mes, cause);
+        System.out.println("EncodingException lancée");
     }
 }
