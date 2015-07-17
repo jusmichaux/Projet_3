@@ -13,39 +13,64 @@ import javax.imageio.ImageIO;
 public class Starter
 {
     String configuration;
-    protected static boolean debug=false;
+    protected static boolean debug=true;
     static boolean create;
     static boolean read;
-    static boolean affiche;
+    static boolean affiche=false;
     static int choiceBuilder1;static int choiceBuilder2;static int choiceBuilder3;
     /**
      * 
      * 
      */
-    public static void main(String []args) throws IOException
+    public static void main(String []args) throws Exception
     {
+        //System.out.println(a.length());
         start(); // Codage ou Lecture
         if (create){
+            // DEBUT --------------------------------- CHOIX DES OPTIONS -------------------------
             Builder startBuilder = new Builder();
             choiceBuilder1=startBuilder.setConfig();
             choiceBuilder2=startBuilder.setDataType();
             choiceBuilder3=startBuilder.setCompressionMode();
-            System.out.println(startBuilder.getconfigurationCode());
+            if(debug){System.out.println(startBuilder.getconfigurationCode());}
+            // FIN   --------------------------------- CHOIX DES OPTIONS -------------------------
             Configurator config= new Configurator(choiceBuilder1,choiceBuilder2,choiceBuilder3);
-            String msgBuilder=startBuilder.text();
+            //System.out.println("test: "+test.length());
+            // DEBUT ----------------------------- ENCODAGE DU TEXTE A DECODER -------------------
+            String msgBuilder=startBuilder.text();   
+            if (choiceBuilder1 == 32){
+                if (msgBuilder.length()>118){choiceBuilder1=suggest(msgBuilder, msgBuilder.length());}
+                else {;}
+            }
+            else if (choiceBuilder1 == 64 ){
+                if (msgBuilder.length()>494) {choiceBuilder1=suggest(msgBuilder, msgBuilder.length());}
+                else {;}
+            }
+            else if (choiceBuilder1 == 128) {
+                if (msgBuilder.length()>2014) {choiceBuilder1=suggest(msgBuilder, msgBuilder.length());}
+                else {;}
+            }
+            else if (choiceBuilder1 == 254) {
+                if (msgBuilder.length()>7999) {choiceBuilder1=suggest(msgBuilder, msgBuilder.length());}
+                else {;}
+            }
             StringBuilder binaryBuilder2=startBuilder.toBinaryStringTwice(msgBuilder);
             if(debug){System.out.println(binaryBuilder2.toString());}
+            // FIN   ----------------------------- ENCODAGE DU TEXTE A DECODER -------------------
+            // DEBUT -------------------------- ENCODAGE DES DONNEES EN TABLEAU -------------------
             int [][]data=new int[choiceBuilder1][choiceBuilder1];
             Encodor startEncodor= new Encodor();
-            affiche();
+            if(debug){affiche();}
             data= startEncodor.encode((startBuilder.getconfigurationCode())+(binaryBuilder2.toString()), choiceBuilder1, affiche);
             startEncodor.encodeParity(data,choiceBuilder1);
-            
-            try 
-            {startBuilder.affiche(data); 
+            // FIN --------------------------- ENCODAGE DES DONNEES EN TABLEAU -------------------
+            try {
+                startBuilder.affiche(data); 
             }
-            catch (IOException e)
-            {System.out.println("Erreur d'écriture");
+            catch (Exception e){
+                System.out.println("Problème d'affichage du tableau data");
+                EncodingException exception= new EncodingException("Erreur", e.getCause());
+                //System.exit(0);
             }
 
         }
@@ -111,24 +136,65 @@ public class Starter
                 next = true;
             }
             if (next) {
-                System.out.println("Vous n'avez pas entrer un choix valide\n");
+                System.out.println("Vous n'avez pas entrer un choix valide");
             }
         }
 
         switch (i){
-            case 1 : System.out.println("Vous avez choisi oui\n");
+            case 1 : System.out.println("Vous avez choisi oui");
             affiche=true;
             break;
-            case 2 : System.out.println("Vous avez choisi non\n");
+            case 2 : System.out.println("Vous avez choisi non");
             affiche=false;
             break;
 
-<<<<<<< HEAD
-            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
-=======
             default: System.out.println("Vous n'avez pas entrer un choix valide");
->>>>>>> parent of b612c8c... Step 6
         }
+
+    }
+
+    public static int suggest(String msgBuilder,int choix){
+        int temp;
+        int choice =1;
+        boolean next = true;
+        System.out.println("");System.out.println("");
+        if(msgBuilder.length()>300){
+            System.out.println("La longueur de vos données est trop importante pour le format que vous utilisez");
+            System.out.println("Voulez-vous changer la taille précédemment choisie ?");
+            System.out.println("Oui (1)\nNon (2)");
+            while (next){
+                Scanner twicechoice= new Scanner(System.in);
+                try{
+                    choice = twicechoice.nextInt();
+                    next = false;
+                } 
+                catch(java.util.NoSuchElementException e){
+                    next = true;
+                }
+                if (choice > 2 || choice < 1){
+                    next = true;
+                }
+                if (next) {
+                    System.out.println("Vous n'avez pas entrer un choix valide");
+                }
+            }
+            if (choice == 1){
+                System.out.println("Taille actuelle: "+choiceBuilder1);
+                System.out.println("Merci de choisir une taille plus grande que la taille actuelle");     
+                temp=choiceBuilder1;
+                Builder startBuilder2 = new Builder();
+                choiceBuilder1=startBuilder2.setConfig();
+                if (debug){System.out.println("choiceBuilder1 :"+choiceBuilder1);}
+                if (choiceBuilder1==(temp)){
+                    choice=2;
+                }
+            } 
+            if ( choice==2){
+                System.out.println("Vous avez forcé la taille :"+choiceBuilder1);
+                System.out.println("\nCelle-ci va être utilisé malgré la perte de données évidente\n");
+            }
+        }
+        return choiceBuilder1;
 
     }
 
@@ -136,9 +202,8 @@ public class Starter
         create= false; read=false;
         int i = 1;
         boolean next = true;
-        System.out.println("Bienvenue dans le programme CB2D\n-----------------------------------------------------");
         System.out.println("Que voulez-vous faire ?\nCréer ou lire un code-barres 2D ?");
-        System.out.println(" Créer  (1)\n Lire   (2)");
+        System.out.println("Créer (1)\nLire (2)");
         while (next){
             Scanner choice = new Scanner (System.in);
             try{
@@ -156,14 +221,14 @@ public class Starter
             }
         }
         switch (i){
-            case 1 : System.out.println("Vous avez choisi créer\n");
+            case 1 : System.out.println("Vous avez choisi créer");
             create=true;read=false;
             break;
-            case 2 : System.out.println("Vous avez choisi lire\n");
+            case 2 : System.out.println("Vous avez choisi lire");
             read=true;create=false;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
+            default: System.out.println("Vous n'avez pas entrer un choix valide");
         }
 
     }

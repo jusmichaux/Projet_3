@@ -59,8 +59,8 @@ public class Decodor implements Decoder {
         int []subarray = new int[16];
         int count=0;
         if (count<16){
-            for (int l=1;l<data.length-1;l++){
-                for (int c=1;c<data[0].length-1;c++){
+            for (int l=1;l<data.length;l++){
+                for (int c=1;c<data[0].length;c++){
                     subarray[count]=data[l][c];
                     count++;
                 }
@@ -73,8 +73,8 @@ public class Decodor implements Decoder {
         String sdata="";
         StringBuilder dat= new StringBuilder(sdata);
         int count=0;
-        for (int l=1;l<data.length-1;l++){
-            for (int c=1;c<data[0].length-1;c++){                
+        for (int l=1;l<data.length;l++){
+            for (int c=1;c<data[0].length;c++){                
                 if (count>15/*&&count<((7*8)+17)*/){
                     dat=dat.append(data[l][c]);
                 }
