@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 public class Starter
 {
     String configuration;
-    protected static boolean debug=true;
+    protected static boolean debug=false;
     static boolean create;
     static boolean read;
     static boolean affiche=false;
