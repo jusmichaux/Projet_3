@@ -34,8 +34,12 @@ public class Starter
             choiceBuilder3=startBuilder.setCompressionMode();
             if(debug){System.out.println(startBuilder.getconfigurationCode());}
             // FIN   --------------------------------- CHOIX DES OPTIONS -------------------------
+            
+            
             Configurator config= new Configurator(choiceBuilder1,choiceBuilder2,choiceBuilder3);
             //System.out.println("test: "+test.length());
+            
+            
             // DEBUT ----------------------------- ENCODAGE DU TEXTE A DECODER -------------------
             String msgBuilder=startBuilder.text();   
             if (choiceBuilder1 == 32){
@@ -57,13 +61,18 @@ public class Starter
             StringBuilder binaryBuilder2=startBuilder.toBinaryStringTwice(msgBuilder);
             if(debug){System.out.println(binaryBuilder2.toString());}
             // FIN   ----------------------------- ENCODAGE DU TEXTE A DECODER -------------------
-            // DEBUT -------------------------- ENCODAGE DES DONNEES EN TABLEAU -------------------
+            
+            
+            // DEBUT -------------------------- ENCODAGE DES DONNEES EN TABLEAU ------------------
             int [][]data=new int[choiceBuilder1][choiceBuilder1];
             Encodor startEncodor= new Encodor();
             if(debug){affiche();}
             data= startEncodor.encode((startBuilder.getconfigurationCode())+(binaryBuilder2.toString()), choiceBuilder1, affiche);
             startEncodor.encodeParity(data,choiceBuilder1);
-            // FIN --------------------------- ENCODAGE DES DONNEES EN TABLEAU -------------------
+            // FIN ---------------------------- ENCODAGE DES DONNEES EN TABLEAU -------------------
+            
+            
+            // DEBUT --------------------------- AFFICHAGE DE LA FENETRE CB2D ---------------------
             try {
                 startBuilder.affiche(data); 
             }
@@ -72,7 +81,9 @@ public class Starter
                 EncodingException exception= new EncodingException("Erreur", e.getCause());
                 //System.exit(0);
             }
-
+            // FIN   --------------------------- AFFICHAGE DE LA FENETRE CB2D ---------------------
+            
+            
         }
         if (read){
             try {
