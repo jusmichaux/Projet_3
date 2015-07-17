@@ -87,10 +87,14 @@ public class Starter
         }
         if (read){
             try {
+                // DEBUT --------------------------------- CHARGERMENT IMAGE -------------------------
                 BufferedImage img = ImageIO.read(new File("test.png"));
                 int width = img.getWidth();
                 int height = img.getHeight();
                 if(debug){System.out.println("width: "+width+ "height: "+height);}
+                // FIN ----------------------------------- CHARGERMENT IMAGE ---------------------------
+                
+                // DEBUT ---------------------------------- DECODAGE IMAGE -----------------------------
                 Builder decodage = new Builder();
                 int [][]data=new int[width][height];
                 data=decodage.getData("test.png", width, height);
@@ -108,12 +112,21 @@ public class Starter
                 Configurator Config= new Configurator(decodage.choicea,decodage.choiceb,decodage.choicec);
                 if(debug){System.out.println("Code de configuration: "+config);}
                 Decodor decod = new Decodor();
+                // FIN ---------------------------------- DECODAGE IMAGE --------------------------------
+                
+                
+                // DEBUT ---------------------------------- CHECK PARITE --------------------------------
                 if (decod.check(data)==true){
                     System.out.println("Aucune erreur détecté");
                 }
                 else {
                     System.out.println("Erreur détectée grâce à check");
                 }
+                
+                // FIN ---------------------------------- CHECK PARITE -----------------------------------
+                
+                
+                // DEBUT --------------------------- AFFICHAGE DE LA FENETRE CB2D --------------------------
                 if(debug){System.out.println("["+decodage.int2str(decod.getData(data))+"]");}
                 try 
                 {decodage.affiche2("test.png", width, height,decodage.int2str(decod.getData(data)) ); 
@@ -121,6 +134,9 @@ public class Starter
                 catch (IOException e)
                 {System.out.println("Erreur d'écriture");
                 }
+                // FIN --------------------------- AFFICHAGE DE LA FENETRE CB2D ----------------------------
+                
+                
             } catch (IOException e) {
                 System.err.println("Une erreur s'est produite lors de la premiere partie de lecture du Code Barre");
             }

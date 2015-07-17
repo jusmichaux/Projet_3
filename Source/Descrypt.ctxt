@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Descrypt()
+comment1.params=password\ entree\ sortie
+comment1.target=void\ crypter(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=password\ entree\ sortie
+comment2.target=void\ decrypter(java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=3
