@@ -8,9 +8,6 @@ dependency10.type=UsesDependency
 dependency11.from=Builder
 dependency11.to=Configurator
 dependency11.type=UsesDependency
-dependency12.from=Builder
-dependency12.to=Encodor
-dependency12.type=UsesDependency
 dependency2.from=Decodor
 dependency2.to=Configuration
 dependency2.type=UsesDependency
@@ -35,86 +32,159 @@ dependency8.type=UsesDependency
 dependency9.from=Starter
 dependency9.to=Data
 dependency9.type=UsesDependency
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+objectbench.height=76
+objectbench.width=1868
+package.editor.height=919
+package.editor.width=1798
+package.editor.x=-8
+package.editor.y=0
+package.numDependencies=11
+=======
 objectbench.height=85
+=======
+objectbench.height=76
+>>>>>>> parent of b612c8c... Step 6
+=======
+objectbench.height=76
+>>>>>>> parent of b612c8c... Step 6
 objectbench.width=1260
-package.editor.height=819
+package.editor.height=828
 package.editor.width=1136
+<<<<<<< HEAD
 package.editor.x=12
 package.editor.y=12
+=======
+package.editor.x=-8
+package.editor.y=-8
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> origin/master
 package.numDependencies=12
+>>>>>>> origin/master
+=======
+package.numDependencies=11
+>>>>>>> parent of b612c8c... Step 6
+=======
+package.numDependencies=11
+>>>>>>> parent of b612c8c... Step 6
 package.numTargets=10
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
 target1.editor.height=984
 target1.editor.width=640
-target1.editor.x=640
+target1.editor.x=0
 target1.editor.y=0
 target1.height=50
-target1.name=Data
+target1.name=Decodor
 target1.naviview.expanded=false
 target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
 target1.width=80
-target1.x=690
-target1.y=470
-target10.editor.height=984
-target10.editor.width=640
-target10.editor.x=640
-target10.editor.y=0
+target1.x=180
+target1.y=420
+target10.editor.height=1092
+target10.editor.width=1932
+target10.editor.x=-8
+target10.editor.y=-8
 target10.height=50
-target10.name=Encodor
+target10.name=Starter
 target10.naviview.expanded=false
 target10.showInterface=false
 target10.type=ClassTarget
 target10.typeParameters=
 target10.width=80
+<<<<<<< HEAD
+target10.x=300
+target10.y=750
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=1030
+target2.editor.y=199
+=======
 target10.x=410
 target10.y=420
+<<<<<<< HEAD
+<<<<<<< HEAD
 target2.editor.height=1000
 target2.editor.width=1296
 target2.editor.x=-8
 target2.editor.y=-8
+>>>>>>> origin/master
+=======
+=======
+>>>>>>> parent of b612c8c... Step 6
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=32
+target2.editor.y=12
+<<<<<<< HEAD
+>>>>>>> parent of b612c8c... Step 6
+=======
+>>>>>>> parent of b612c8c... Step 6
 target2.height=50
-target2.name=Configurator
+target2.name=Configuration
 target2.naviview.expanded=false
 target2.showInterface=false
-target2.type=ClassTarget
+target2.type=InterfaceTarget
 target2.typeParameters=
 target2.width=100
-target2.x=280
-target2.y=340
-target3.editor.height=984
-target3.editor.width=640
-target3.editor.x=0
-target3.editor.y=0
+target2.x=330
+target2.y=10
+target3.editor.height=700
+target3.editor.width=900
+target3.editor.x=32
+target3.editor.y=12
 target3.height=50
-target3.name=Decodor
+target3.name=Configurator
 target3.naviview.expanded=false
 target3.showInterface=false
 target3.type=ClassTarget
 target3.typeParameters=
-target3.width=80
-target3.x=180
-target3.y=420
+target3.width=100
+target3.x=280
+target3.y=340
 target4.editor.height=700
 target4.editor.width=900
-target4.editor.x=211
-target4.editor.y=274
+target4.editor.x=308
+target4.editor.y=252
 target4.height=50
-target4.name=Fenetre
+target4.name=Encoder
 target4.naviview.expanded=false
 target4.showInterface=false
-target4.type=ClassTarget
+target4.type=InterfaceTarget
 target4.typeParameters=
 target4.width=80
+<<<<<<< HEAD
+target4.x=610
+target4.y=10
+target5.editor.height=1096
+target5.editor.width=1936
+=======
 target4.x=620
 target4.y=200
+<<<<<<< HEAD
+<<<<<<< HEAD
 target5.editor.height=1000
 target5.editor.width=1296
+>>>>>>> origin/master
 target5.editor.x=-8
 target5.editor.y=-8
+=======
+=======
+>>>>>>> parent of b612c8c... Step 6
+target5.editor.height=984
+target5.editor.width=640
+target5.editor.x=640
+target5.editor.y=0
+<<<<<<< HEAD
+>>>>>>> parent of b612c8c... Step 6
+=======
+>>>>>>> parent of b612c8c... Step 6
 target5.height=50
 target5.name=Builder
 target5.naviview.expanded=false
@@ -123,56 +193,110 @@ target5.type=ClassTarget
 target5.typeParameters=
 target5.width=80
 target5.x=400
-target5.y=670
-target6.editor.height=700
-target6.editor.width=900
-target6.editor.x=308
-target6.editor.y=252
+target5.y=630
+target6.editor.height=984
+target6.editor.width=640
+target6.editor.x=640
+target6.editor.y=0
 target6.height=50
-target6.name=Encoder
+target6.name=Encodor
 target6.naviview.expanded=false
 target6.showInterface=false
-target6.type=InterfaceTarget
+target6.type=ClassTarget
 target6.typeParameters=
 target6.width=80
+<<<<<<< HEAD
+target6.x=460
+target6.y=420
+target7.editor.height=984
+target7.editor.width=640
+target7.editor.x=640
+target7.editor.y=0
+=======
 target6.x=610
 target6.y=10
 target7.editor.height=700
 target7.editor.width=900
+<<<<<<< HEAD
+<<<<<<< HEAD
 target7.editor.x=105
 target7.editor.y=155
+>>>>>>> origin/master
+=======
+target7.editor.x=1030
+target7.editor.y=199
+>>>>>>> parent of b612c8c... Step 6
+=======
+target7.editor.x=1030
+target7.editor.y=199
+>>>>>>> parent of b612c8c... Step 6
 target7.height=50
-target7.name=Configuration
+target7.name=Data
 target7.naviview.expanded=false
 target7.showInterface=false
-target7.type=InterfaceTarget
+target7.type=ClassTarget
 target7.typeParameters=
-target7.width=100
-target7.x=330
-target7.y=10
+target7.width=80
+target7.x=690
+target7.y=550
 target8.editor.height=700
 target8.editor.width=900
-target8.editor.x=316
-target8.editor.y=277
+target8.editor.x=211
+target8.editor.y=274
 target8.height=50
-target8.name=Decoder
+target8.name=Fenetre
 target8.naviview.expanded=false
 target8.showInterface=false
-target8.type=InterfaceTarget
+target8.type=ClassTarget
 target8.typeParameters=
 target8.width=80
+<<<<<<< HEAD
+target8.x=620
+target8.y=200
+target9.editor.height=700
+target9.editor.width=900
+target9.editor.x=316
+target9.editor.y=277
+=======
 target8.x=70
 target8.y=10
+<<<<<<< HEAD
+<<<<<<< HEAD
 target9.editor.height=1000
 target9.editor.width=1296
 target9.editor.x=-8
 target9.editor.y=-8
+>>>>>>> origin/master
+=======
+=======
+>>>>>>> parent of b612c8c... Step 6
+target9.editor.height=984
+target9.editor.width=640
+target9.editor.x=640
+target9.editor.y=0
+<<<<<<< HEAD
+>>>>>>> parent of b612c8c... Step 6
+=======
+>>>>>>> parent of b612c8c... Step 6
 target9.height=50
-target9.name=Starter
+target9.name=Decoder
 target9.naviview.expanded=false
 target9.showInterface=false
-target9.type=ClassTarget
+target9.type=InterfaceTarget
 target9.typeParameters=
 target9.width=80
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+target9.x=70
+target9.y=10
+=======
 target9.x=290
+=======
+target9.x=300
+>>>>>>> parent of b612c8c... Step 6
+=======
+target9.x=300
+>>>>>>> parent of b612c8c... Step 6
 target9.y=750
+>>>>>>> origin/master

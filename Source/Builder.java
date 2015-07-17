@@ -1,5 +1,5 @@
 import barcode2d.*;
-import java.util.*;
+import java.util.Scanner;
 import java.io.*;
 /**
  * Write a description of class Builder here.
@@ -13,7 +13,7 @@ public class Builder{
     static StringBuffer configuration = new StringBuffer (config) ; 
     static String msg;
     protected static boolean debug=false;
-
+    
     int i=0;int j=0; int l=0;
     private String filename; 
     private BarCode2DReader reader = new BarCode2DReader();
@@ -34,28 +34,28 @@ public class Builder{
                 next = true;
             }
             if (next) {
-                System.out.println("Vous n'avez pas entrer un choix valide");
+                System.out.println("Vous n'avez pas entrer un choix valide\n");
             }
         }
         switch (i){
-            case 1 : System.out.println("Vous avez choisi 32x32");
+            case 1 : System.out.println("Vous avez choisi 32x32\n");
             configuration.append ("000");
             choicea=32;
             break;
-            case 2 : System.out.println("Vous avez choisi 64x64");
+            case 2 : System.out.println("Vous avez choisi 64x64\n");
             configuration.append ("001");
             choicea=64;
             break;
-            case 3 : System.out.println("Vous avez choisi 128x128");
+            case 3 : System.out.println("Vous avez choisi 128x128\n");
             configuration.append ("010");
             choicea=128;
             break;
-            case 4 : System.out.println("Vous avez choisi 256x256");    
+            case 4 : System.out.println("Vous avez choisi 256x256\n");    
             configuration.append ("011");
             choicec=256;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
         return choicea;
     }
@@ -75,7 +75,7 @@ public class Builder{
             catch(java.util.NoSuchElementException e){
                 next = true;
             }
-            if (l > 2 || l < 1){
+            if (i > 2 || i < 1){
                 next = true;
             }
             if (next) {
@@ -84,15 +84,15 @@ public class Builder{
         }
         switch (l)
         {
-            case 1 : System.out.println("Mode de compression activé");
+            case 1 : System.out.println("Mode de compression activé\n");
             configuration.append ("001");
             choicec=1;
             break;
-            case 2 : System.out.println("Mode de compression désactivé");
+            case 2 : System.out.println("Mode de compression désactivé\n");
             configuration.append ("000");
             choicec=0;
             break;
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
         configuration.append("000000");// 6 bits fixés à 0
         return choicec;
@@ -125,24 +125,24 @@ public class Builder{
             }
         }
         switch (j){
-            case 1 : System.out.println("Vous avez choisi  ASCII 7 bits ");
+            case 1 : System.out.println("Vous avez choisi  ASCII 7 bits\n");
             configuration.append ("0000");
             choiceb=0;
             break;
-            case 2 : System.out.println("Vous avez choisi  ASCII étendu");
+            case 2 : System.out.println("Vous avez choisi  ASCII étendu\n");
             configuration.append ("0001");
             choiceb=1;
             break;
-            case 3 : System.out.println("Vous avez choisi URL");
+            case 3 : System.out.println("Vous avez choisi URL\n");
             configuration.append ("0010");
             choiceb=2;
             break;
-            case 4 : System.out.println("Vous avez choisi Japanese Kanji"); 
+            case 4 : System.out.println("Vous avez choisi Japanese Kanji\n"); 
             configuration.append ("0011");
             choiceb=3;
             break;
 
-            default: System.out.println("Vous n'avez pas entrer un choix valide");
+            default: System.out.println("Vous n'avez pas entrer un choix valide\n");
         }
         return choiceb;
 
@@ -202,24 +202,11 @@ public class Builder{
         return binary;
     }
 
-    public String text() {
-        boolean repeat=true; String encoding;String msg="";
+    public static String text() {
         System.out.printf("\nQuel est le texte à encoder ?\n");
-        System.out.printf("\nAttention, écrivez endScanner pour marquer la fin de votre texte !\n");
         Scanner sc = new Scanner(System.in);
-        do{
-            encoding=sc.next();
-            msg=msg+" "+encoding;
-            this.msg=msg;
-        }
-        while (!msg.endsWith("endScanner"));
-        /*if (msg.endsWith("endScanner")){
-        return msg;
-        }*/
+        msg=sc.nextLine();
         sc.close();
-        msg=msg.substring(0, msg.length()-11);
-        if(debug){System.out.println(msg);}
-        this.msg=msg;
         return msg;
     }
 
@@ -317,18 +304,16 @@ public class Builder{
     public static void affiche(int [][]data)throws IOException
     {
         Data dataf= new Data(data);
-
+        BarCode2DWriter writer = new BarCode2DWriter((BarCode2DData) dataf);
+        new BarCode2DFrame ((BarCode2DData)dataf, msg); 
         try 
         {
-            BarCode2DWriter writer = new BarCode2DWriter((BarCode2DData) dataf);
-            new BarCode2DFrame ((BarCode2DData)dataf, msg); 
             writer.drawBarCode2D("test.png", choicea, choicea);
         }
         catch (IOException e)
         {
             System.out.println("Erreur d'écriture");
         }
-
     }
 
     public static void affiche2(String filename, int height, int width, String msg)throws IOException{
