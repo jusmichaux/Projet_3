@@ -5,4 +5,6 @@ comment1.params=password\ entree\ sortie
 comment1.target=void\ crypter(java.lang.String,\ java.lang.String,\ java.lang.String)
 comment2.params=password\ entree\ sortie
 comment2.target=void\ decrypter(java.lang.String,\ java.lang.String,\ java.lang.String)
-numComments=3
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
