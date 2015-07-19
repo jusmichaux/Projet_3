@@ -8,13 +8,13 @@ import java.io.*;
  * @version (a version number or a date)
  */
 public class Builder{
-    static int choicea, choiceb, choicec;
+    static int choicea, choiceb, choicec, choiced;
     static String config = "";static String cfg = "";
     static StringBuffer configuration = new StringBuffer (config) ; 
     static String msg;
     protected static boolean debug=false;
 
-    int i=0;int j=0; int l=0;
+    int i=0;int j=0; int l=0;int m=0;int n=0;
     private String filename; 
     private BarCode2DReader reader = new BarCode2DReader();
     public int setConfig() {
@@ -101,7 +101,76 @@ public class Builder{
         //c = Integer.parseInt(cfg);
 
     }
-
+    public int setCrypt(){
+        boolean next=true;
+        System.out.println("Voulez-vous utilisez le mode de cryptage ?");
+        System.out.printf("\n Oui (1) \n Non (2)\n"); 
+        while (next){
+            Scanner choice = new Scanner (System.in);
+            try{
+                m=choice.nextInt() ;
+                next = false;
+            } 
+            catch(java.util.NoSuchElementException e){
+                next = true;
+            }
+            if (l > 2 || l < 1){
+                next = true;
+            }
+            if (next) {
+                System.out.println("Vous n'avez pas entrer un choix valide");
+            }
+        }
+        switch (m)
+        {
+            case 1 : System.out.println("Mode de cryptage activé");
+            //configuration.append ("001");
+            choiced=1;
+            break;
+            case 2 : System.out.println("Mode de cryptage désactivé");
+            //configuration.append ("000");
+            choiced=0;
+            break;
+            default: System.out.println("Vous n'avez pas entrer un choix valide");
+        }
+        return choiced;
+    }
+    public String setCryptOrCryptSimple(){
+        boolean next=true;
+        System.out.println("Deux modes de cryptage sont disponibles");
+        System.out.printf("  Le CryptSimple: \n Lèger\n Sécurité faible\n  Le Crypt: \n Lourd\n Sécurité importante");
+        System.out.printf("\n CryptSimple (1) \n Crypt (2)\n"); 
+        while (next){
+            Scanner choice = new Scanner (System.in);
+            try{
+                m=choice.nextInt() ;
+                next = false;
+            } 
+            catch(java.util.NoSuchElementException e){
+                next = true;
+            }
+            if (l > 2 || l < 1){
+                next = true;
+            }
+            if (next) {
+                System.out.println("Vous n'avez pas entrer un choix valide");
+            }
+        }
+        Descrypt crypt = new Descrypt();
+        switch (n)
+        {
+            case 1 : System.out.println("Lancement de procédure: CryptSimple");
+            return crypt.getCryptSimple("lol", 3);
+            
+            
+            case 2 : System.out.println("Lancement de procédure: Crypt");
+            return crypt.getEncrypt("lol", "key");
+            
+            
+            default: System.out.println("Vous n'avez pas entrer un choix valide");
+        }
+        return setCryptOrCryptSimple();    
+    }
     public int setDataType(){  
         //configuration.delete(0, configuration.length());
         //System.out.println(configuration);
