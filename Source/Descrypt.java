@@ -27,7 +27,8 @@ public class Descrypt{
         String aftera = withBuilder2.toBinaryString(a);
         System.out.println("binary bonjour crypted: "+aftera);
         System.out.println("Length of bonjour crypted: "+aftera.length());
-        /*  TEST 2
+        
+        //TEST 2
         String code = "0012";
         String cle = "Blowfish";
         System.out.println("Avant Cryptage");
@@ -41,7 +42,7 @@ public class Descrypt{
         System.out.println("Length of binary Code:"+binarycode.length());
         System.out.println("Binary Code crypted:"+binaryecodecrypted);
         System.out.println("Length of binary Code crypted:"+binaryecodecrypted.length());
-         */
+        
     }
     public String getDecryptSimple(String password, int key){
         return decryptSimple(password, key);
